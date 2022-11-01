@@ -1,8 +1,6 @@
 import Container from "@mui/material/Container";
-import Box from "@mui/material/Box";
-import SearchBox from "./SearchBox";
+import SearchBox from "../components/SearchBox";
 import Grid from "@mui/material/Grid";
-
 
 export default function Body() {
   return (

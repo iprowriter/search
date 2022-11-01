@@ -1,14 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
 import ClearIcon from "@mui/icons-material/Clear";
 import { styled } from "@mui/material/styles";
-import type { RootState } from "../redux/store";
-import { useSelector } from "react-redux";
 import { searchResult } from "../redux/slices/filteredSlices";
 import { useDispatch } from "react-redux";
 import { data } from "../data";
@@ -18,23 +16,38 @@ const StyledTextField = styled(TextField)`
 `;
 
 export default function SearchBox() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const navigateToProjects = () => {
     navigate("/projects");
   };
 
- // const data = useSelector((state: RootState) => state.projectStatus);
-
-  const dispatch = useDispatch();
-
   const [projects, setProjects] = useState<any>([]);
   const [disable, setDisable] = useState(true);
   const [query, setQuery] = useState("");
+  const [noMatch, setNoMatch] = useState("");
+
+  const handleClearQuery = () => {
+    if (inputRef.current) {
+      inputRef.current.value = "";
+      setDisable(true);
+      setNoMatch("");
+      setQuery("");
+    }
+  };
+
+  useEffect(() => {
+    window.localStorage.setItem("searchQuery", JSON.stringify(query));
+    const searchQueryResult = window.localStorage.getItem("searchQuery");
+    if (searchQueryResult !== null) setQuery(JSON.parse(searchQueryResult));
+  }, [query]);
 
   const getProjects = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.value.length >= 3) {
+    if (e.target.value.length >= 2) {
       setQuery(e.target.value);
+      console.log(query.length)
     }
     let filteredProjects: any = data.filter((value) => {
       return value.projectName.toLowerCase().includes(query);
@@ -52,20 +65,14 @@ export default function SearchBox() {
       saveSearchResult();
     }
 
-    if (query.length >= 3 && filteredProjects.length >= 2) {
+    if (query.length >= 2 && filteredProjects.length >= 1) {
       setDisable(false);
       console.log(`filtered projects: ${filteredProjects.length}`);
-    } else if (query.length >= 3 && filteredProjects.length === 0) {
-      console.log("no project found");
+    } else if (query.length >= 2 && filteredProjects.length === 0) {
+      setNoMatch("No project found");
       setDisable(true);
     }
   };
-
-  const getSearchResult = useSelector((state: RootState) => state.filteredData);
-
-  console.log(`filtered Data: ${getSearchResult}`);
-
-  console.log(projects);
 
   return (
     <Grid container>
@@ -78,6 +85,7 @@ export default function SearchBox() {
         alignItems="center"
       >
         <StyledTextField
+          inputRef={inputRef}
           fullWidth
           id="filled-basic"
           label="search for projects"
@@ -86,7 +94,10 @@ export default function SearchBox() {
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
-                <IconButton aria-label="toggle password visibility">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleClearQuery}
+                >
                   <ClearIcon />
                 </IconButton>
               </InputAdornment>
@@ -100,11 +111,12 @@ export default function SearchBox() {
         justifyContent="center"
         alignItems="center"
       >
-        <ul>
-          {projects.map((item: any, index: any) => (
-            <li key={index}>{item.projectName}</li>
+        <p>
+          {projects.map((item: any) => (
+            <p key={item.id}>{item.projectName}</p>
           ))}
-        </ul>
+        </p>
+        <p>{noMatch}</p>
       </Grid>
       <Grid
         container

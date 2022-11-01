@@ -8,6 +8,8 @@ import Button from "@mui/material/Button";
 import type { RootState } from "../redux/store";
 import { useSelector } from "react-redux";
 import Result from "./Result";
+
+
 const StyledCard = styled(Card)`
   padding: 15px;
   height: 800px;
@@ -29,10 +31,8 @@ export default function ResultCard() {
     navigate("/");
   };
 
- // const projects = useSelector((state: RootState) => state.projectStatus);
   const getSearchResult = useSelector((state: RootState) => state.filteredData);
 
-  console.log(`filtered Data2: ${getSearchResult}`);
 
   return (
     <StyledCard>
