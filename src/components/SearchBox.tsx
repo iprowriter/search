@@ -1,3 +1,4 @@
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import { useEffect, useRef, useState } from "react";
@@ -10,6 +11,8 @@ import { styled } from "@mui/material/styles";
 import { searchResult } from "../redux/slices/filteredSlices";
 import { useDispatch } from "react-redux";
 import { data } from "../data";
+
+
 
 const StyledTextField = styled(TextField)`
   width: 700px;
@@ -24,10 +27,10 @@ export default function SearchBox() {
     navigate("/projects");
   };
 
-  const [projects, setProjects] = useState<any>([]);
-  const [disable, setDisable] = useState(true);
+  const [projects, setProjects] = useState<Array<string>>([]);
+  const [disable, setDisable] = useState<boolean>(true);
   const [query, setQuery] = useState("");
-  const [noMatch, setNoMatch] = useState("");
+  const [noMatch, setNoMatch] = useState<string>("");
 
   const handleClearQuery = () => {
     if (inputRef.current) {
@@ -35,19 +38,23 @@ export default function SearchBox() {
       setDisable(true);
       setNoMatch("");
       setQuery("");
+      setProjects([]);
     }
   };
 
-  useEffect(() => {
-    window.localStorage.setItem("searchQuery", JSON.stringify(query));
-    const searchQueryResult = window.localStorage.getItem("searchQuery");
-    if (searchQueryResult !== null) setQuery(JSON.parse(searchQueryResult));
-  }, [query]);
+  const handleBackpsaceDelete = (e: any) => {
+    if (e.key === "Backspace") {
+      setDisable(true);
+      setNoMatch("");
+      setQuery("");
+      setProjects([]);
+    }
+  };
 
   const getProjects = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.value.length >= 2) {
       setQuery(e.target.value);
-      console.log(query.length)
+      console.log(query.length);
     }
     let filteredProjects: any = data.filter((value) => {
       return value.projectName.toLowerCase().includes(query);
@@ -74,6 +81,8 @@ export default function SearchBox() {
     }
   };
 
+  
+
   return (
     <Grid container>
       <Grid
@@ -91,6 +100,7 @@ export default function SearchBox() {
           label="search for projects"
           variant="filled"
           onChange={getProjects}
+          onKeyDown={handleBackpsaceDelete}
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
@@ -111,11 +121,11 @@ export default function SearchBox() {
         justifyContent="center"
         alignItems="center"
       >
-        <p>
+        <Grid>
           {projects.map((item: any) => (
             <p key={item.id}>{item.projectName}</p>
           ))}
-        </p>
+        </Grid>
         <p>{noMatch}</p>
       </Grid>
       <Grid

@@ -1,46 +1,130 @@
-# Getting Started with Create React App
+Thanks for downloading the app. This file shows you how to use this app.  To run the app right away without reading other parts 
+of this document, please scroll down to phase 2 below. Alternatively, simply run `npm install` and then `npm start` on the root folder of this project.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+However, I recommend going through the entire documentation. There are 4 phases in this documentation. Phase 1 is the description of the  project.
+Phase 2 shows how to run the project. Phase 3 provides additional information on testing and deployment while phase 5 provides licensing information.
 
-## Available Scripts
+*****************************************************************************************************************************************
 
-In the project directory, you can run:
+### PHASE 1:  DESCRIPTION AND DEFINITION OF THE APP
 
-### `npm start`
 
-Runs the app in the development mode.\
+# PROJECT NAME: GOOD CARBON
+
+# DESCRIPTION: HOME ASSESSMENT TASK
+This app allows users to search for projects using any keyword. When the keyword (at least 3 letters) matches any project on the database, it will show the projects and activates the search button. By clicking on "Search Project" button, the user can now be taken to another page where he can see all the projects. The user can create or uncreate each project, he can approve or unapprove each project, and he can publish or unpublish each project.
+
+# App Created By: Martin Oputa <martin@martinoputa.com>
+
+# USE CASE FOR THIS APP
+This app can be used internally by a company to keep track of all the project status. The use of Redux in managing application state in this app means that it can be used to manage large database. Additionally, this ensures that the app can scale in the long-run.
+
+
+# VISUALS
+You can get idea of how this project looks like by viewing the screenshot from the links listed below. Alternatively, you can run the project to see how it looks and works in real live
+Links for visuals:
+https://ibb.co/Xx9MKzq
+https://ibb.co/LxDLHhX 
+
+
+
+# TECHNOLOGIES USED FOR THIS APP:
+- TypeScript: 79%
+- HTML: 11.8%
+- JavaScript: 6.5%
+- CSS: 2.5%
+- Material-UI
+- Redux
+- Styled Components
+- NPM
+
+
+# FEATURES
+- Search project functionality
+- Create (and un-create) project functionality
+- Approve (and unapprove) project functionality
+- Publish (and unpublish) project functionality
+
+
+# APP DESIGN LOGIC
+Redux was used in this app to manage the app state. While redux is not necessary for small apps, it is important in the enterprise-scenario since it becomes much useful as the app grows. Styled-component was combined with Material-UI  in this project. The use of Styled-Component makes it easier to keep the CSS for each 
+component inside that component. This makes it easier to debug the app and of course, maintain and scale it. Finally, the components in the app were kept as small as
+possible following the industry standard for easy maintenance.
+
+*****************************************************************************************************************************************
+
+
+### PHASE 2:  HOW TO RUN THIS APP ON YOUR MACHINE
+
+In this phase 2, we discuss how you can set up this app and run it locally on your machine
+
+# Step 1:
+Cd into the project root folder e.g: user\goodcarbon
+
+Note: The exact file path may differ on your machine. However, the project is saved on a folder name `goodcarbon`
+
+# Step 2:
+Run `npm install`
+
+Note: `npm install` will download node_modules and also add all the dependencies used for this project
+
+# Step 3:
+After node_modules installation have been completed, run the following command to start the project on development mode:
+
+Run `npm start`
+
+# Step 4:
+After running `npm start`, the app should not start on [http://localhost:3000]
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
+*****************************************************************************************************************************************
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+### PHASE 3: ADDITIONAL INFO
+This section is only necessary if there is a need to scale the app and use it on real live scenario.
 
-Builds the app for production to the `build` folder.\
+# To test the app:
+Run `npm test`
+
+Note: This will launch the test runner in the interactive watch mode.
+
+# To build the app
+Run `npm run build`
+
+Note: This will build the app and minify it for production. The build app can be seen on the  `build` folder. You can only deply the app after the build is completed.
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Support
+To ask questions regarding this project, please contact the author via e-mail at: `martin@martinoputa.com`
 
-### `npm run eject`
+*****************************************************************************************************************************************
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### PHASE 4: LICENCE
+MIT License
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Copyright (c) [2022] [`MARTIN OPUTA`]
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-## Learn More
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# Acknowledgment
+This project was inspired by goodcarbon. I'm very grateful for the opportunity to get an insight on some of the tasks required of a frontend developer in 
+your company.
