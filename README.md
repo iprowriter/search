@@ -21,11 +21,10 @@ This app can be used internally by a company to keep track of all the project st
 
 
 # VISUALS
-You can get idea of how this project looks like by viewing the screenshot from the links listed below. Alternatively, you can run the project to see how it looks and works in real live
+You can get idea of how this project looks like by viewing the screenshot from the links listed below. Alternatively, you can run the project to see how it looks and works in real live. (Useful in to know what to expect)
 Links for visuals:
-https://ibb.co/Xx9MKzq
-https://ibb.co/LxDLHhX 
-
+https://postimg.cc/pyGqptqX
+https://postimg.cc/dhPsPgM4
 
 
 # TECHNOLOGIES USED FOR THIS APP:
@@ -59,7 +58,7 @@ possible following the industry standard for easy maintenance.
 In this phase 2, we discuss how you can set up this app and run it locally on your machine
 
 # Step 1:
-Cd into the project root folder e.g: user\goodcarbon
+Cd into the project root folder e.g: `user\goodcarbon`
 
 Note: The exact file path may differ on your machine. However, the project is saved on a folder name `goodcarbon`
 
@@ -82,7 +81,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 
 ### PHASE 3: ADDITIONAL INFO
-This section is only necessary if there is a need to scale the app and use it on real live scenario.
+This section is only necessary if there is a need to scale the app and use it in real live scenario.
 
 # To test the app:
 Run `npm test`
@@ -126,5 +125,5 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 # Acknowledgment
-This project was inspired by goodcarbon. I'm very grateful for the opportunity to get an insight on some of the tasks required of a frontend developer in 
+This project was inspired by goodcarbon. I'm very grateful for the opportunity to get an insight into some of the tasks required of a frontend developer in 
 your company.

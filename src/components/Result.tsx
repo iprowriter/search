@@ -13,14 +13,12 @@ import {
 } from "../redux/slices/filteredSlices";
 import { useDispatch } from "react-redux";
 
-
 const StyledCardContentResult = styled(CardContent)`
   background-color: #eff0f1;
   margin-left: 0;
   margin-right: 0;
   margin-top: 8px;
 `;
-
 
 export default function ResultCard({
   id,
@@ -38,7 +36,6 @@ export default function ResultCard({
   isPublished: boolean;
 }) {
     const dispatch = useDispatch();
-
 
    const create = () => {
      dispatch(created({ id: id, isCreated: !isCreated }));

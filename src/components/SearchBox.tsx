@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import InputAdornment from "@mui/material/InputAdornment";
@@ -11,8 +11,6 @@ import { styled } from "@mui/material/styles";
 import { searchResult } from "../redux/slices/filteredSlices";
 import { useDispatch } from "react-redux";
 import { data } from "../data";
-
-
 
 const StyledTextField = styled(TextField)`
   width: 700px;
@@ -27,9 +25,9 @@ export default function SearchBox() {
     navigate("/projects");
   };
 
+  const [query, setQuery] = useState<string>("");
   const [projects, setProjects] = useState<Array<string>>([]);
   const [disable, setDisable] = useState<boolean>(true);
-  const [query, setQuery] = useState("");
   const [noMatch, setNoMatch] = useState<string>("");
 
   const handleClearQuery = () => {
@@ -54,7 +52,6 @@ export default function SearchBox() {
   const getProjects = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.value.length >= 2) {
       setQuery(e.target.value);
-      console.log(query.length);
     }
     let filteredProjects: any = data.filter((value) => {
       return value.projectName.toLowerCase().includes(query);
@@ -74,14 +71,11 @@ export default function SearchBox() {
 
     if (query.length >= 2 && filteredProjects.length >= 1) {
       setDisable(false);
-      console.log(`filtered projects: ${filteredProjects.length}`);
     } else if (query.length >= 2 && filteredProjects.length === 0) {
       setNoMatch("No project found");
       setDisable(true);
     }
   };
-
-  
 
   return (
     <Grid container>

@@ -9,7 +9,6 @@ import type { RootState } from "../redux/store";
 import { useSelector } from "react-redux";
 import Result from "./Result";
 
-
 const StyledCard = styled(Card)`
   padding: 15px;
   height: 800px;
